@@ -1,0 +1,11 @@
+[section_backgrounds]
+default = ""
+blue = "section--blue"
+dark = "section--dark"
+light_gray = "section--light-gray"
+[feed_sizes]
+default = ""
+1x2 = "postcard-grid__cell--1x2"
+1x3 = "postcard-grid__cell--1x3"
+2x1 = "postcard-grid__cell--2x1"
+2x2 = "postcard-grid__cell--2x2"

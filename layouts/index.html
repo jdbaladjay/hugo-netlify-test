@@ -1,0 +1,88 @@
+{{ define "script" }}
+<script src="{{ (index .Site.Data.resources "homepage.js") | relURL }}"></script>
+{{ end }}
+
+{{ define "main" }}
+<div class="page">
+
+  <section class="section section--no-top-padding">
+    <div class="container container--narrow container--no-padding container--overflow">
+      <div id="nav-anchor">
+        {{ partial "hero.html" . }}
+
+        <div class="postcard-grid">
+          {{ $feed_sizes := .Site.Data.properties.feed_sizes }}
+
+          {{/*  {{ $list_page := index .Site.Taxonomies.tags "2019" }}
+          {{ range $list_page.Pages.ByDate.Reverse }}
+            {{ $feed_size := index $feed_sizes .Params.card.size }}
+            {{ if eq .Params.card.template "card"}}
+              <div class="postcard-grid__cell {{ $feed_size }} postcard postcard--card postcard--shadow">
+                <a href="{{ .RelPermalink }}" class="postcard__link">
+                  <img class="postcard__image" src="{{ .Params.card.image }}">
+                </a>
+                <div class="postcard__details">
+                    <span class="postcard__date">{{ .Date.Format "January 2, 2006" }}</span>
+                  <p>{{ .Params.card.summary }}</p>
+                </div>
+              </div>
+              
+            {{ else }}
+              <div class="postcard-grid__cell {{ $feed_size }} postcard postcard--shadow">
+                <a href="{{ .RelPermalink }}" class="postcard__link">
+                  <img class="postcard__image" src="{{ .Params.card.image }}">
+                </a>
+              </div>
+            {{ end }}
+          {{ end }}  */}}
+
+          {{ $list_page := where (where .Site.RegularPages "Type" "post") ".Date" ">=" (time "2019-01-01")}}
+          {{ range $list_page }}
+            {{ $feed_size := index $feed_sizes .Params.card.size }}
+            {{ if eq .Params.card.template "card"}}
+              <div class="postcard-grid__cell {{ $feed_size }} postcard postcard--card postcard--shadow">
+                <span class="postcard__title">{{ .Params.post_title }}</span>
+                <a href="{{ .RelPermalink }}" class="postcard__link">
+                  <img class="postcard__image" src="{{ .Params.card.image }}">
+                </a>
+                <div class="postcard__details">
+                    <span class="postcard__date">{{ .Date.Format "January 2, 2006" }}</span>
+                  <p>{{ .Params.card.summary }}</p>
+                </div>
+              </div>
+              
+            {{ else }}
+              <div class="postcard-grid__cell {{ $feed_size }} postcard postcard--shadow">
+                <span class="postcard__title">{{ .Params.post_title }}</span>
+                <a href="{{ .RelPermalink }}" class="postcard__link">
+                  <img class="postcard__image" src="{{ .Params.card.image }}">
+                </a>
+              </div>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{ range .Params.page_sections }}
+    {{ if eq  .template "section-three-blocks" }}
+      {{ partial "sections/three-blocks.html" (dict "global_context" $ "data" .) }}
+    {{ end }}
+    {{ if eq  .template "section-testimonials" }}
+      {{ partial "sections/testimonials.html" (dict "global_context" $ "data" .) }}
+    {{ end }}
+    {{ if eq  .template "section-featured-content" }}
+      {{ partial "sections/featured-content.html" (dict "global_context" $ "data" .) }}
+    {{ end }}
+  {{ end }}
+
+  <section class="section section--no-top-padding">
+    <div class="container container--narrow text-center">
+      <h2 class="section__title">Latest Posts</h2>
+      <p class="hero__description">Similique quo iusto ipsa, excepturi autem voluptate consectetur sit quae praesentium</p>
+      <a href="/posts/" class="button button--small button--green">View Latest Posts</a>
+    </div>
+  </section>
+</div>
+{{ end }}

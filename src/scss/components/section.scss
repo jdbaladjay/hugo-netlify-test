@@ -1,0 +1,66 @@
+.section {
+  padding: 3.125rem 0; // 50px 0
+  background-color: white;
+
+  @include breakpoint(medium) {
+    padding: 4.6975rem 0; // 75px 0
+  }
+
+  @include breakpoint(large) {
+    padding: 6.25rem 0; // 100px 0
+  }
+
+  &--blue {
+    background-image: $site-gradiet-blue;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &--dark {
+    background-color: $site-color-blue-2;
+  }
+
+  &--light-gray {
+    background-color: #eef0f1;
+  }
+
+  &--no-top-padding {
+    padding-top: 0;
+  }
+
+  &--no-bottom-padding {
+    padding-bottom: 0;
+  }
+
+  &--border-top {
+    border-top: 1px solid #eee;
+  }
+
+  &--border-bottom {
+    border-bottom: 1px solid #eee;
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+
+  &__content-md {
+    font-size: 20px;
+
+    p {
+      font-weight: 300;
+      margin-bottom: 46px;
+    }
+  }
+
+  &--compressed {
+    .section__title,
+    .section__content-md p {
+      margin-bottom: 30px;
+    }
+    
+    .section__content-md p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

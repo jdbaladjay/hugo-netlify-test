@@ -1,0 +1,19 @@
+<base href="/">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ if eq .Kind "404" }}
+<title>Page Not Found</title>
+{{ else if eq .Kind "taxonomy" }}
+<title>Posts from {{ .Title }} - My Site Name</title>
+{{ else }}
+<title>{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+<link rel="canonical" href="{{ .URL | absURL }}">
+{{ with .Description }}<meta name="description" content="{{.}}">{{ end }}
+{{ with .Keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
+
+{{ end }}
+{{ partial "analytics-head.html" . }}
+{{ if isset .Site.Data.resources "commons.css" }}
+<link href="{{ (index .Site.Data.resources "commons.css") | relURL }}" rel="stylesheet">
+{{ end }}

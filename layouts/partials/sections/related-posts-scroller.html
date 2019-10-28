@@ -1,0 +1,48 @@
+{{ $section_backgrounds := .global_context.Site.Data.properties.section_backgrounds }}
+{{ $section_background := index $section_backgrounds (.data.background | default $section_backgrounds.default) }}
+
+<section class="section {{ $section_background }} {{ if .data.white_text }}text-white{{ end }} {{ if .data.no_top_padding }}section--no-top-padding{{ end }} {{ if .data.no_bottom_padding }}section--no-bottom-padding{{ end }}">
+  <div class="container text-center">
+    {{ if .data.title }}
+    <h2 {{ if .data.id }}id="{{ .data.id }}"{{ end }} class="section__title">{{ .data.title | safeHTML }}</h2>
+    {{ end }}
+
+    {{ if .data.content_md }}
+    <div class="section__content-md">
+      {{ $markdown := .data.content_md | markdownify }}
+      {{ $hasP := strings.Contains $markdown "<p>" }}
+      {{ if not $hasP }}<p>{{ end }}
+      {{ $markdown }}
+      {{ if not $hasP }}</p>{{ end }}        
+    </div>
+    {{ end }}
+  </div>
+
+  <div class="container container--no-padding">
+    <div class="swiper-container" role="region" aria-label="{{ .data.title }}" class="text-center">
+      <div class="swiper-wrapper">
+        {{ range .data.related_posts }}
+        <div class="swiper-slide">
+          <div class="related-post postcard text-center">
+            <a href="{{ .link }}" class="postcard__link">
+              <img class="postcard__image" src="{{ .image }}" alt="{{ .title }}">
+              <div class="related-post__overlay show-for-large">
+                <div class="related-post__overlay-label">VISIT</div>
+              </div>
+            </a>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      <div class="swiper-pagination container"></div>
+  
+      <div class="swiper-button-prev">
+        <span class="show-for-sr">Previous Slide</span>
+      </div>
+      <div class="swiper-button-next">
+        <span class="show-for-sr">Next Slide</span>
+      </div>  
+    </div>
+  </div>
+  
+</section>

@@ -1,0 +1,45 @@
+{
+  "name": "conversr-website",
+  "version": "1.0.0",
+  "description": "Repository for Conversr Website",
+  "scripts": {
+    "watch": "webpack --config webpack.dev.js",
+    "start": "hugo server -D --disableFastRender",
+    "build": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/a1gent/conversr-website.git"
+  },
+  "author": "Burst SMS Developers",
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://bitbucket.org/a1gent/conversr-website/src",
+  "dependencies": {
+    "compass-mixins": "^0.12.10",
+    "foundation-sites": "^6.5.0-rc.2",
+    "jquery": "^3.3.1",
+    "motion-ui": "^2.0.3",
+    "select2": "^4.0.6-rc.1",
+    "swiper": "^4.3.5",
+    "toastr": "^2.1.4",
+    "vanilla-tilt": "^1.7.0",
+    "what-input": "^5.1.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
+    "sass-loader": "^7.1.0",
+    "simple-parallax-js": "^5.1.0",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-manifest-plugin": "^2.0.3",
+    "webpack-merge": "^4.1.3"
+  }
+}

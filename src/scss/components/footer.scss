@@ -1,0 +1,15 @@
+.site-footer {
+  height: $site-footer-height;
+  background-color: #3F3F3F;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+
+  &__copyright {
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
+  }
+}

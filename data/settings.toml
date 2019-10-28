@@ -1,0 +1,9 @@
+copyright = "© 2019 ASDFG. All Rights Reserved."
+logo = "/images/ui/logo.png"
+logo_alt = "ASDFG"
+[office_address]
+inline = "58 Pitt Street Level6, Suite 24 Sydney, NSW 2000 Australia"
+formatted = "58 Pitt Street<br>Level6, Suite 24<br>Sydney, NSW 2000<br>Australia"
+google_map_api_key = "AIzaSyBQdch5IcgcQaKNG76sbMQv1MEBEKLeQ-8&language=en&region=AU"
+google_map_lat = -33.8642378
+google_map_lng = 151.2090831

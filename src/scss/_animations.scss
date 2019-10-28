@@ -1,0 +1,52 @@
+@include keyframes(animate-move-up) {
+  0% {
+    opacity: 0;
+    @include transform(translate3d(0,16px,0));
+  }
+
+  75% {
+    opacity: 0;
+    @include transform(translate3d(0,16px,0));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform(translate3d(0,0,0));
+  }
+}
+
+@include keyframes(animate-appear) {
+  0% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-move-up {
+  @include animation(animate-move-up 0.75s ease-in-out);
+}
+
+.animate-appear {
+  @include animation(animate-appear 1s ease-in);
+}
+
+@include keyframes(navigation-mobile-appear) {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.navigation-mobile--on {
+  @include animation(navigation-mobile-appear 0.2s ease-in-out);
+}

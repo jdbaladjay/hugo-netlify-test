@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
+
+// When using webpack loaders we need to include compass mixins one by one
+@import 'node_modules/compass-mixins/lib/animate';
+@import 'node_modules/compass-mixins/lib/compass';
+@import 'node_modules/compass-mixins/lib/lemonade';
+
+@import 'node_modules/foundation-sites/scss/foundation';
+@import 'settings';
+@include foundation-everything;
+
+@import 'node_modules/motion-ui/src/motion-ui';
+@include motion-ui-transitions;
+@include motion-ui-animations;
+
+@import 'variables';
+@import 'mixins';
+@import 'layouts';
+@import 'animations';
+@import 'components/type';
+@import 'components/button';
+@import 'components/section';
+@import 'components/navigation';
+@import 'components/carousel';
+@import 'components/footer';
+@import 'components/post';
+@import 'pages/homepage';
+@import 'pages/contact-us';

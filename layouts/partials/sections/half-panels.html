@@ -1,0 +1,27 @@
+{{ $section_backgrounds := .global_context.Site.Data.properties.section_backgrounds }}
+{{ $section_background := index $section_backgrounds (.data.background | default $section_backgrounds.default) }}
+
+<section class="section {{ $section_background }} {{ if .data.white_text }}text-white{{ end }} section--compressed {{ if .data.no_top_padding }}section--no-top-padding{{ end }} {{ if .data.no_bottom_padding }}section--no-bottom-padding{{ end }}">
+  <div class="container grid-half-panels {{ if .data.reverse }}grid-half-panels--reverse{{ end }}">
+    <div class="grid-half-panels__left">
+      {{ if .data.image }}
+      <img src="{{ .data.image }}">
+      {{ end }}
+    </div>
+    <div class="grid-half-panels__right">
+      {{ if .data.title }}
+      <h2 {{ if .data.id }}id="{{ .data.id }}"{{ end }} class="section__title">{{ .data.title | safeHTML }}</h2>
+      {{ end }}
+
+      {{ if .data.content_md }}
+      <div class="section__content-md">
+        {{ $markdown := .data.content_md | markdownify }}
+        {{ $hasP := strings.Contains $markdown "<p>" }}
+        {{ if not $hasP }}<p>{{ end }}
+        {{ $markdown }}
+        {{ if not $hasP }}</p>{{ end }}        
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+{{ $section_backgrounds := .global_context.Site.Data.properties.section_backgrounds }}
+{{ $section_background := index $section_backgrounds (.data.background | default $section_backgrounds.default) }}
+
+<section class="section {{ $section_background }} {{ if .data.white_text }}text-white{{ end }} {{ if .data.no_top_padding }}section--no-top-padding{{ end }} {{ if .data.no_bottom_padding }}section--no-bottom-padding{{ end }}">
+  <div class="container text-center">
+    {{ if .data.title }}
+    <h2 {{ if .data.id }}id="{{ .data.id }}"{{ end }} class="section__title">{{ .data.title | safeHTML }}</h2>
+    {{ end }}
+    {{ if .data.content_md }}
+    <div class="section__content-md">
+      {{ $markdown := .data.content_md | markdownify }}
+      {{ $hasP := strings.Contains $markdown "<p>" }}
+      {{ if not $hasP }}<p>{{ end }}
+      {{ $markdown }}
+      {{ if not $hasP }}</p>{{ end }}        
+    </div>
+    {{ end }}
+    <div class="grid-block grid-block--3">
+      {{ range .data.features }}
+      <div class="feature-block">
+        <div class="feature-block__image">
+          {{ if .image }}<img src="{{ .image }}">{{ end }}
+        </div>
+        <h3 class="feature-block__title">{{ .title }}</h3>
+        <p class="feature-block__description">{{ .description }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>

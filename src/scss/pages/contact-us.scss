@@ -1,0 +1,96 @@
+.contact-us {
+
+  &__title {
+    font-size: 38px;
+    margin-bottom: 0.8em;
+  }
+
+  &__description {
+    font-size: 22px;
+    margin-bottom: 44px;
+    font-weight: 300;
+    line-height: 1.9;
+  }
+
+  &__address {
+    font-weight: 300;
+    display: grid;
+    grid-row-gap: 22px;
+  }
+
+  &__map {
+    #map {
+      height: 295px;
+      width: 100%;
+    }
+  }
+}
+
+.grid-contact-us {
+  display: grid;
+  grid-column-gap: 55px;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(7,1fr);
+  grid-template-areas:
+    "header header header header . . ."
+    "form   form   form   form   aside aside aside";
+
+  &__header {
+    grid-area: header;
+  }
+
+  &__form {
+    grid-area: form;
+  }
+
+  &__aside {
+    grid-area: aside;
+    padding-top: 24px;
+  }
+}
+
+.grid-demo-form {
+  display: grid;
+  grid-gap: 12px 30px;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(6, 1fr);
+
+  &__span-1 {
+    grid-column: span 1;
+  }
+
+  &__span-2 {
+    grid-column: span 2;
+  }
+
+  &__span-3 {
+    grid-column: span 3;
+  }
+
+  &__span-6 {
+    grid-column: span 6;
+  }
+
+  &__phone-number-fields {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    > label {
+      flex-basis: 100%;
+    }
+
+    > select {
+      flex-basis: 100px;
+    }
+
+    > input {
+      flex-basis: calc(100% - 115px); // parent width - (width of select element + 15px margin)
+    }
+  }
+
+  &__button {
+    margin-top: 28px;
+    padding: 1em 1.94em;
+  }
+}

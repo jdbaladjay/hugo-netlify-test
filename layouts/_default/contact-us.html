@@ -1,0 +1,128 @@
+{{ define "script" }}
+<script src="{{ (index .Site.Data.resources "homepage.js") | relURL }}"></script>
+{{ end }}
+
+{{ define "main" }}
+<div class="page page--padded-top page--padded-bottom page--blue text-white">
+  <div class="container grid-contact-us">
+    
+    <div class="grid-contact-us__header">
+      {{ with .Params.page_title }}
+      <h1 class="contact-us__title">{{ . | safeHTML }}</h1>
+      {{ end }}
+      
+      {{ with .Params.page_description }}
+      <p class="contact-us__description">{{ . | safeHTML }}</p>
+      {{ end }}
+    </div>
+
+    <div class="grid-contact-us__form">
+      <form class="grid-demo-form">
+
+        <!-- First Name -->
+        <div class="grid-demo-form__span-3">
+          <label>First Name *</label>
+          <input type="text" name="" placeholder="">
+        </div>
+
+        <!-- Last Name -->
+        <div class="grid-demo-form__span-3">
+          <label>Last Name *</label>
+          <input type="text" name="" placeholder="">
+        </div>
+        
+        <!-- Phone Number -->
+        <div class="grid-demo-form__span-3 grid-demo-form__phone-number-fields">
+          <label> Phone Number *</label>
+          <select>
+            <option value="">AU+61</option>
+          </select>
+          <input type="text" name="" placeholder="">
+        </div>
+        
+        <!-- Email -->
+        <div class="grid-demo-form__span-3">
+          <label>Email *</label>
+          <input type="email" name="" placeholder="">
+        </div>
+        
+        <!-- -->
+        <div class="grid-demo-form__span-3">
+          <label>&nbsp;</label>
+          <input type="text" name="" placeholder="">
+        </div>
+        
+        <!-- -->
+        <div class="grid-demo-form__span-3">
+          <label>Referrer *</label>
+          <select>
+            <option value="">How did you hear about us?</option>
+            <option value="Google Search">Google Search</option>
+            <option value="Banner Advert">Banner Advert</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Twitter">Twitter</option>
+            <option value="Email">Email</option>
+            <option value="Referral">Referral</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <!-- -->
+        <div class="grid-demo-form__span-6">
+          <label>&nbsp;</label>
+          <input type="text" name="" placeholder="">
+        </div>
+
+        <!-- -->
+        <div class="grid-demo-form__span-6">
+          <label>&nbsp;</label>
+          <textarea name="" id="" cols="30" rows="7"></textarea>
+        </div>
+
+        <button type="submit" class="button button--dark grid-demo-form__span-2 grid-demo-form__button">Get in touch</button>
+      </form>
+    </div>
+
+    <aside class="grid-contact-us__aside">
+      <div class="contact-us__address">
+        {{ $office_address := .Site.Data.settings.office_address }}
+        <h2>Our Office</h2>
+        <p>{{ $office_address.formatted | safeHTML }}</p>
+        <div class="contact-us__map">
+          <!-- Start Office Map -->
+          <div>
+            <script>
+              function initMap() {
+                var office = {
+                  lat: {{ $office_address.google_map_lat }},
+                  lng: {{ $office_address.google_map_lng }}
+                };
+                
+                var map = new google.maps.Map(
+                  document.getElementById('map'), {
+                  zoom: 16,
+                  center: office,
+                  mapTypeControl: false,
+                  zoomControl: false,
+                  streetViewControl: false,
+                  fullscreenControl: true
+                });
+                
+                var marker = new google.maps.Marker({
+                  position: office,
+                  map: map,
+                  animation: google.maps.Animation.DROP
+                });
+              }
+            </script>
+            <div id="map"></div>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key={{$office_address.google_map_api_key | safeURL}}&callback=initMap"></script>
+          </div>
+          <!-- End Office Map -->
+        </div>
+
+      </div>
+    </aside>
+  </div>
+</div>
+{{ end }}

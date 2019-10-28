@@ -1,0 +1,64 @@
+// Contextual text classes
+@each $name, $color in $foundation-palette {
+  .text-#{$name} { color:$color !important; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #343a40;
+}
+
+h1 {
+  font-size: 38px;
+  font-weight: 900;
+  margin-bottom: 0.8em;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+label {
+  color: inherit;
+  font-weight: 300;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+#{text-inputs()},
+select,
+textarea {
+  margin: 0;
+  border: 1px solid #eaeaea;
+  font-size: 14px;
+  font-weight: 300;
+  padding-left: 12px;
+  @include appearance(none);
+  
+  &:focus {
+    border-color: #b1b1b1;
+  }
+}
+
+select {
+  @include select-arrow("/images/ui/arrow.png", $width: 17px, $height: 9px);
+  padding-right: 25px;
+  cursor: pointer;
+  transition: background-position .10s ease-in-out;
+
+  &:hover {
+    background-position: right -1rem top 0.57em;
+  }
+}
+
+a {
+  font-weight: 600;
+}
+
+.small {
+  font-size: 0.9em;
+}

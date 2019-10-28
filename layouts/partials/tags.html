@@ -1,0 +1,10 @@
+This post is under
+<br> 
+{{ $tags := .Params.tags }}
+{{ range $index, $tag := $tags }}
+  {{ if ne $index 0 }},{{ end }}
+  {{ if and (ne $index 0) (eq (add $index 1) (len $tags)) }} and {{ end }}
+  {{ with $.Site.GetPage (printf "/%s/%s" "tags" ($tag | urlize)) }}
+  <a href="{{ .RelPermalink }}">{{ $tag }}</a>
+  {{ end }}
+{{ end }}

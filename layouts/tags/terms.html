@@ -1,0 +1,29 @@
+{{ define "script" }}
+<script src="{{ (index .Site.Data.resources "homepage.js") | relURL }}"></script>
+{{ end }}
+
+{{ define "main" }}
+<div class="page">
+  <section class="section section--border-bottom">
+    <div class="container container--extra-narrow container--overflow text-center animate-move-up">
+      <header>
+        <h1>Tags</h1>
+      </header>
+      <ul class="tag-list">
+      {{ range .Pages }}
+        <li class="tag-list__tag">
+          <a href="{{.Permalink}}">{{ .Title }} ({{ len .Pages }})</a>
+        </li>
+      {{ end }}
+      </ul>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container container--extra-narrow text-center">
+      <h2 class="section__title">Latest Posts</h2>
+      <p class="hero__description">Similique quo iusto ipsa, excepturi autem voluptate consectetur sit quae praesentium</p>
+      <a href="/posts/" class="button button--small button--green">Latest Posts</a>
+    </div>
+  </section>
+</div>
+{{ end }}

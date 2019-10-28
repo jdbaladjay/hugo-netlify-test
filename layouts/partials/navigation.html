@@ -1,0 +1,30 @@
+<nav class="navigation navigation--fixed {{ if .IsHome }}animate-appear{{ end }}">
+  <div class="navigation__logo">
+    <a href="/">
+      <img src="{{ .Site.Data.settings.logo }}" {{ with .Site.Data.settings.logo_alt }}alt="{{ . }}"{{ end }}>
+    </a>
+  </div>
+  <div class="navigation__menu-bar">
+    <input type="text" placeholder="Search places..." class="navigation__search">
+    <ul class="navigation__menu">
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.desktop }}
+      <li class="show-for-xlarge">
+        <a href="{{ .URL }}" class="navigation__link {{ if or ($currentPage.IsMenuCurrent "desktop" .) ($currentPage.HasMenuCurrent "desktop" .) }}navigation__link--active{{ end }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    <button type="button" class="navigation__menu-toggle hide-for-xlarge" id="navigation-mobile-open"></button>
+  </div>
+</nav>
+
+<nav class="navigation-mobile hide-for-xlarge" id="navigation-mobile" style="display: none;">
+  <button type="button" class="navigation-mobile__close" id="navigation-mobile-close">×</button>
+  <ul class="navigation-mobile__menu">
+    {{ range .Site.Menus.mobile }}
+    <li>
+      <a href="{{ .URL }}" class="navigation-mobile__link {{ if or ($currentPage.IsMenuCurrent "mobile" .) ($currentPage.HasMenuCurrent "mobile" .) }}navigation-mobile__link--active{{ end }}">{{ .Name }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</nav>

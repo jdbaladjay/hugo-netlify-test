@@ -1,0 +1,3 @@
+{{ if isset .Site.Data.resources "commons.js" }}
+<script src="{{ (index .Site.Data.resources "commons.js") | relURL }}"></script>
+{{ end }}

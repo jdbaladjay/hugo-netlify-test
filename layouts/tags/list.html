@@ -1,0 +1,57 @@
+{{ define "script" }}
+<script src="{{ (index .Site.Data.resources "homepage.js") | relURL }}"></script>
+{{ end }}
+
+{{ define "main" }}
+<div class="page">
+  {{ $paginator := .Paginate (.Pages) }}
+
+  <section class="section section--no-top-padding section--no-bottom-padding">
+    <div class="container container--no-padding container--overflow">
+      <div class="grid-list">
+        <header>
+          <div class="grid-list__header">
+            <h1>Posts in
+              <br>
+              "{{ .Title }}"
+            </h1>
+            <p class="hero__description">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia esse aut
+            </p>
+
+            {{ partial "side-navigation.html" . }}
+          </div>
+        </header>
+
+        <div class="grid-list__content">
+          <div class="postcard-grid postcard-grid--stack">
+            {{ $feed_sizes := .Site.Data.properties.feed_sizes }}
+            {{ range $paginator.Pages }}
+              {{ $feed_size := index $feed_sizes .Params.card.size }}
+              <div class="postcard-grid__cell postcard-grid__cell--2x2 postcard postcard--card postcard--shadow">
+                <span class="postcard__title">{{ .Params.post_title }}</span>
+                <a href="{{ .RelPermalink }}" class="postcard__link">
+                  <img class="postcard__image" src="{{ .Params.card.image }}">
+                </a>
+                <div class="postcard__details">
+                  <span class="postcard__date">{{ .Date.Format "January 2, 2006" }}</span>
+                  <p>{{ .Params.card.summary }}</p>
+                </div>
+              </div>
+            {{ end }}
+          </div>
+          {{ template "_internal/pagination.html" . }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container--narrow text-center">
+      <h2 class="section__title">Looking for older articles?</h2>
+      <p class="hero__description">View our blog archive to find more places.</p>
+      <a href="/archive/" class="button button--small button--green">View Archive</a>
+    </div>
+  </section>
+</div>
+{{ end }}

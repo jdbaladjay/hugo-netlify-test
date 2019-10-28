@@ -1,0 +1,56 @@
+baseURL = "https://www.asdf.com"
+languageCode = "en-us"
+title = "ASDF"
+paginate = 7
+[taxonomies]
+tag = "tags"
+[permalinks]
+2019 = "/posts/:year/:slug/"
+[blackfriday]
+fractions = false
+[menu]
+[[menu.desktop]]
+identifier = "holidays"
+name = "HOLIDAYS"
+url = "/holidays/"
+weight = 1
+[[menu.desktop]]
+identifier = "latest-posts"
+name = "LATEST POSTS"
+url = "/posts/"
+weight = 2
+[[menu.desktop]]
+identifier = "tags"
+name = "TAGS"
+url = "/tags/"
+weight = 3
+[[menu.mobile]]
+identifier = "latest-posts"
+name = "LATEST POSTS"
+url = "/posts/"
+weight = 1
+[[menu.mobile]]
+identifier = "beaches"
+name = "BEACHES"
+url = "/tags/beaches/"
+weight = 2
+[[menu.mobile]]
+identifier = "cities"
+name = "CITIES"
+url = "/tags/cities/"
+weight = 3
+[[menu.mobile]]
+identifier = "archive"
+name = "ARCHIVE"
+url = "/archive/"
+weight = 4
+[[menu.mobile]]
+identifier = "tags"
+name = "TAGS"
+url = "/tags/"
+weight = 5
+[[menu.mobile]]
+identifier = "holidays"
+name = "HOLIDAYS"
+url = "/holidays/"
+weight = 6

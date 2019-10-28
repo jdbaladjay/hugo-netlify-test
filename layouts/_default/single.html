@@ -1,0 +1,70 @@
+{{ define "script" }}
+<script src="{{ (index .Site.Data.resources "homepage.js") | relURL }}"></script>
+{{ end }}
+
+{{ define "main" }}
+<article class="page">
+  <div class="container container--no-padding container--wide">
+    <div class="grid-post animate-move-up">
+      <header class="grid-post__header post-header">
+        {{ if .Params.post_image }}
+        <figure class="post-header__figure">
+          <img src="{{ .Params.post_image }}" {{ with .Params.post_image_alt }} alt="{{.}}" title="{{.}}" {{ end }}>
+          {{ with .Params.post_image_alt }}
+          <figcaption class="grid-post__padding text-right">{{.}}</figcaption>
+          {{ end }}
+        </figure>
+        {{ end }}
+        
+        <div class="grid-post__padding">
+          <h1 class="post-header__headline text-center">{{ .Params.post_title  }}</h1>
+          <p class="post-info flex-between">
+            <span>{{ with .Params.author }}By <a href="#">{{.}}</a>{{ end }}</span>
+            <span>On {{ .Date.Format "January 2, 2006" }}</span>  
+          </p>
+        </div>
+      </header>
+      <div class="grid-post__content">
+        <div class="post-md-content grid-post__padding" id="ad-anchor">
+          {{ $markdown := .Content | markdownify }}
+          {{ $hasP := strings.Contains $markdown "<p>" }}
+          {{ if not $hasP }}<p>{{ end }}
+          {{ $markdown }}
+          {{ if not $hasP }}</p>{{ end }}
+
+          <p class="post-info">
+            {{ partial "tags.html" . }}
+          </p>
+        </div>
+      </div>
+      <aside class="grid-post__aside">
+
+      </aside>
+      <div class="grid-post__ads" data-sticky-container>
+        <div class="sticky" data-sticky data-margin-top="5.375" data-top-anchor="ad-anchor:top" data-btm-anchor="ad-anchor:bottom">
+          <a class="ad-container" href="#">
+            <img src="images/ads/investaprime_sidebar.jpg">
+          </a>
+          <a class="ad-container" href="#">
+            <img src="images/ads/monday-600x600.png">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{ range .Params.page_sections }}
+    {{ if eq  .template "related-posts-scroller" }}
+      {{ partial "sections/related-posts-scroller.html" (dict "global_context" $ "data" .) }}
+    {{ end }}
+  {{ end }}
+
+  <section class="section section--no-top-padding">
+    <div class="container container--narrow text-center">
+      <h2 class="section__title">Latest</h2>
+      <p class="hero__description">Similique quo iusto ipsa, excepturi autem voluptate consectetur sit quae praesentium</p>
+      <a href="/posts/" class="button button--small button--green">Latest Posts</a>
+    </div>
+  </section>
+</article>
+{{ end }}

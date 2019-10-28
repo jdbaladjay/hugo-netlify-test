@@ -1,0 +1,6 @@
+{
+  "articles.js": "dist/articles.js",
+  "commons.css": "dist/commons.css",
+  "commons.js": "dist/commons.js",
+  "homepage.js": "dist/homepage.js"
+}

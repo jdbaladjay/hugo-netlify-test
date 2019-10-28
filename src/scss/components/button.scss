@@ -1,0 +1,52 @@
+.button {
+  font-size: 22px;
+  font-weight: 400;
+  color: white;
+  margin: 0;
+  min-width: 220px;
+  padding: 0.90em 1.94em;
+  border-radius: 4px;
+
+  &--green {
+    background-color: #56bba9;
+
+    &:hover, &:focus {
+      background-color: darken(#56bba9, 8);
+    }
+  }
+
+  &--blue {
+    background-color: $site-color-blue-1;
+
+    &:hover, &:focus {
+      background-color: darken($site-color-blue-1, 8);
+    }
+  }
+
+  &--dark {
+    background-color: $site-color-blue-2;
+
+    &:hover, &:focus {
+      background-color: darken($site-color-blue-2, 8);
+    }
+  }
+
+  &--yellow {
+    background-color: $site-color-yellow-1;
+
+    &:hover, &:focus {
+      background-color: darken($site-color-yellow-1, 8);
+    }
+  }
+
+  &--small {
+    font-size: 16px;
+    min-width: 140px;
+  }
+
+  &--nav {
+    font-size: inherit;
+    padding: 0.61em 0.9em;
+    min-width: unset;
+  }
+}
