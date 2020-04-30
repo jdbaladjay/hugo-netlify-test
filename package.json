@@ -18,7 +18,7 @@
   "dependencies": {
     "compass-mixins": "^0.12.10",
     "foundation-sites": "^6.5.0-rc.2",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "motion-ui": "^2.0.3",
     "select2": "^4.0.6-rc.1",
     "swiper": "^4.3.5",
